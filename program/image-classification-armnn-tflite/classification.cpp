@@ -113,6 +113,7 @@ int main(int argc, char* argv[]) {
 
             switch (input_type) {
                 case armnn::DataType::Float32:
+                    cout << "Float32" << endl;
                     if (settings.skip_internal_preprocessing)
                         benchmark.reset(new ArmNNBenchmark<float, InCopy, OutCopy>(&settings, (float*)input, (float*)output, 0));
                     else
@@ -120,6 +121,7 @@ int main(int argc, char* argv[]) {
                     break;
 
                 case armnn::DataType::QuantisedAsymm8:
+                    cout << "QuantisedAsymm8" << endl;
                     benchmark.reset(new ArmNNBenchmark<uint8_t, InCopy, OutDequantize>(&settings, (uint8_t*)input, (uint8_t*)output, 0));
                     break;
 
